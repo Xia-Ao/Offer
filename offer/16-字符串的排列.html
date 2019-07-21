@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**题目：输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。
+     *
+     * 思路：
+     * 不是很懂
+     *
+     * */
+
+    function Permutation(str){
+        if(!str || str.length === 0){
+            return [];
+        }
+        var result = [];
+        var arr = str.split('');
+        var temp = '';
+        ordering(arr);
+        result = result.filter(function(item, index){  //去重
+            return result.indexOf(item) === index;
+        });
+        return result;
+        function ordering(tempArr){
+            if(tempArr.length === 0){
+
+                result.push(temp);
+                return;
+            }
+            for(var i = 0; i < tempArr.length; i++){
+                temp += tempArr[i];
+                insideArr = tempArr.concat();
+                insideArr.splice(i,1);
+                ordering(insideArr);
+                temp = temp.substring(0, temp.length - 1);   //回溯
+            }
+        }
+    }
+
+    console.log(Permutation('sdfkja'));
+
+
+</script>
+</body>
+</html>

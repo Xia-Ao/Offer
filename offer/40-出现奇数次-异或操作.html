@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  let array = [2, 4, 3, 6, 3, 2, 5, 5];
+
+  function or (array) {
+    let orResult = 0;
+    array.forEach(num => {
+      orResult ^= num;
+    });
+    return orResult;
+  }
+
+  let orResult = or(array);
+  console.log(orResult);
+
+  let index = findFirstBit1(orResult);
+  let arr1 = [], arr2 = [], res = [];
+  array.forEach(num => {
+    if (isBit1(num, index)) {
+      arr1.push(num);
+    } else {
+      arr2.push(num)
+    }
+  });
+  res.push(or(arr1));
+  res.push(or(arr2));
+
+  console.log(res)
+
+  function findFirstBit1 (num) {
+    let i = 0;
+    while ((num & 1) == 0) {
+      i++;
+      num = num >> 1;
+    }
+    return i;
+  }
+
+  function isBit1 (num, index) {
+    num = num >> index;
+    return (num & 1)
+  }
+
+
+</script>
+</body>
+</html>

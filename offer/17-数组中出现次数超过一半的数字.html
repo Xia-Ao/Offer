@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**题目：数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
+     *
+     * 思路：
+
+     * */
+
+    function fname(arr) {
+        if (arr.length <= 0) {
+            return false
+        }
+        let obj = {};
+        for (let i in arr) {
+            if (obj[arr[i]]) {
+                obj[arr[i]]++
+            } else {
+                obj[arr[i]] = 1
+            }
+        }
+        let maxNum = 0;
+        let maxKey = '';
+        for (let key in obj) {
+            if (obj[key] >= maxNum) {
+                maxNum = obj[key];
+                maxKey = key;
+            }
+        }
+        let result = maxNum > arr.length >> 1 ? Number(maxKey) : 0;
+        return result
+    }
+
+    console.log(fname([1, 6, 6, 3, 6, 6, 6, 5, 4,6, 2]))
+
+</script>
+</body>
+</html>

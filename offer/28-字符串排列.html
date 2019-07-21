@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  /**
+   * 输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。
+   * */
+
+  // 测试order函数
+
+  // let arr = ['a', 'b', 'c'];
+  // let temp = '';
+  //
+  // let result = [];
+  //
+  // function ordering (tempArr) {
+  //   if (tempArr.length === 0) {
+  //     result.push(temp);
+  //     console.log(temp);
+  //     return;
+  //   }
+  //   for (let i = 0; i < tempArr.length; i++) {
+  //     debugger
+  //     temp += tempArr[i];
+  //     let insideArr = tempArr.concat();
+  //     insideArr.splice(i, 1);
+  //     console.log(insideArr);
+  //     ordering(insideArr);
+  //     temp = temp.substring(0, temp.length - 1);   //回溯
+  //     console.log('temp', temp)
+  //   }
+  // }
+  //
+  //
+  // ordering(arr);
+  // console.log(result);
+
+
+  function Permutation (str) {
+    // write code here
+    if (!str || str.length === 0) {
+      return [];
+    }
+
+    let result = [];
+    let arr = str.split('');
+    let temp = '';
+
+    order(arr);
+    return [...result];
+
+    function order (tempArr) {
+      if (tempArr.length === 0) {
+        result.push(temp);
+        return;
+      }
+      for (let i = 0; i < tempArr.length; i++) {
+        temp += tempArr[i];
+        insideArr = tempArr.concat();
+        insideArr.splice(i, 1);
+        order(insideArr);
+        temp = temp.substring(0, temp.length - 1);  // 回溯
+      }
+    }
+
+
+  }
+
+
+</script>
+</body>
+</html>
